@@ -10,4 +10,6 @@ library(raster)
 #installazione
 #install.packages("raster")[apriamo le virgolette perchè siamo usciti da R]
 library(raster)
-#
+
+#Settaggio cartella 
+
