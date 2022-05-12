@@ -11,5 +11,9 @@ library(raster)
 #install.packages("raster")[apriamo le virgolette perchè siamo usciti da R]
 library(raster)
 
-#Settaggio cartella 
+#Settaggio cartella di lavoro 
+#setwd("~/lab/") #linux
+#setwd("/User/utente/lab") #mac
+setwd("C:/lab/") #windows
+
 
