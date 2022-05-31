@@ -25,3 +25,17 @@ brick("p224r63_2011.grd")
 l2011 <- brick("p224r63_2011.grd")
 #dopo aver importato i dati = diamo il nome l2011 e usciranno tutte le informazioni 
 l2011
+
+#plot
+plot(l2011)
+
+#per cambiare il colore 
+#al seguente link: https://www.r-graph-gallery.com/42-colors-names.html
+colorRampPalette()
+colorRampPalette(c("black", "grey", "light grey"))
+#abbiamo un passaggio graduale non è netto 
+#quante ne vogliamo?? = quanti numeri di passaggio = con 100 colori 
+colorRampPalette(c("black", "grey", "light grey")) (100)
+#diamo un nome 
+cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+
