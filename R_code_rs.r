@@ -38,4 +38,6 @@ colorRampPalette(c("black", "grey", "light grey"))
 colorRampPalette(c("black", "grey", "light grey")) (100)
 #diamo un nome 
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+#nella funzione plot = l'argomento da inserire come colore = col
+plot(l2011, col = cl)
 
