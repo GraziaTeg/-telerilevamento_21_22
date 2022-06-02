@@ -41,3 +41,8 @@ cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 #nella funzione plot = l'argomento da inserire come colore = col
 plot(l2011, col = cl)
 
+#se non fa il grafico mettere dev.off() -> per un problema di grafica = ripulire tutto 
+dev.off()
+
+#18.03.22
+
