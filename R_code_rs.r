@@ -81,6 +81,32 @@ plot(l2011$B1_sre)
 plot(l2011[[1]])
 #elemento numero 1 = banda blu
 
+#legenda non ci piace rimettiamo la palette di prima 
+#colorRampPalette(c("black", "grey", "light grey")) (100)
+#con anche 
+cl <- colorRampPallette(c("black", "grey", "light grey")) (100) 
+#quindi prendiamo 
+plot(l2011$B1_sre)
+cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+plot(l2011$B1_sre, col = cl) #col = colorare 
+
+#plot b1 da dark blu a blu a light blu 
+l2011
+plot(l2011$B1_sre)
+clblue <- colorRampPalette(c("dark blue", "blue", "light blue")) (100)
+plot(l2011$B1_sre, col = clblue)
+
+
+#let's export the image and let it appear in the lab folder: kind of magic
+#esportiamo l'immagine e facciamola apparire nella cartella lab: sorta di magia
+#la funzione si chiama pdf = es banda1.pdf
+#pdf(banda1.pdf) = mancano le "_" perché usciamo da R = path = percorso 
+pdf("banda1.pdf")
+plot(l2011$B1_sre, col = clblue)
+
+dev.off()
+
+
 
 
 
