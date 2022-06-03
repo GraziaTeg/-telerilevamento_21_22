@@ -135,13 +135,20 @@ dev.off() #per chiudere
 
 #se vogliamo fare un pdf con questo oggetto 
 #export multiframe plot #esporto un plot multiframe
+#facciamo un multiframe con il blu (B1) a sinistra e (B2) a destra
 pdf(multiframe.pdf)
 par(mfrow = c(1, 2))
 plot(l2011$B1_sre, col = clblue) 
 plot(l2011$B2_sre, col = clgreen) 
 dev.off()
 
-
+#esercizio: 
+#exercise: revert the multiframe
+#ora proviamo a fare un multiframe con il blu (B1) sopra e (B2) sotto
+par(mfrow = c(2, 1))
+plot(l2011$B1_sre, col = clblue) #plot banda 1 = blue
+plot(l2011$B2_sre, col = clgreen) #plot banda 2 = green
+dev.off() 
 
 
 
