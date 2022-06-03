@@ -106,6 +106,15 @@ plot(l2011$B1_sre, col = clblue)
 
 dev.off()
 
+#come facciamo a far capire che vogliamo salvare nella cartella lab
+#perchè all'inizio abbiamo settato la cartella di lavoro
+#set working directory, con tutto il percorso 
+#se lo vogliamo dentro un'altra cartella = cambiando il path mettiamo
+#per esempio
+#pdf("~/Downloads/banda1.pfd")
+#senza specificare il path = percorso va dentro alla cartella lab
+
+
 
 
 
