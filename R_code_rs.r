@@ -20,6 +20,7 @@ setwd("C:/lab/") #windows = miio sistema operativo
 #per importare un pacchetto di dati esiste una funzione in R
 #la funzione per importare tanti dati in R si chiama BRICK
 #come si usano le funzioni su R
+?brick
 brick("p224r63_2011.grd") #funzione per importare interi pacchetti di dati, cioè un'immagine satellitare
 #poi l'assegnamo all'oggetto
 l2011 <- brick("p224r63_2011.grd")
@@ -37,6 +38,7 @@ plot(l2011)
 
 #per cambiare il colore della leggenda
 #al seguente link: https://www.r-graph-gallery.com/42-colors-names.html
+?colorRampPalette
 colorRampPalette()
 colorRampPalette(c("black", "grey", "light grey"))
 #abbiamo un passaggio graduale non è netto 
@@ -45,6 +47,7 @@ colorRampPalette(c("black", "grey", "light grey")) (100)
 #diamo un nome 
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 #nella funzione plot = l'argomento da inserire come colore = col
+?plot
 plot(l2011, col = cl)
 #plottato con tutte le bande
 
@@ -90,7 +93,7 @@ plot(l2011$B1_sre)
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 plot(l2011$B1_sre, col = cl) #col = colorare 
 
-#plot b1 da dark blu a blu a light blu 
+#plot B1 da dark blu a blu a light blu 
 l2011
 plot(l2011$B1_sre)
 clblue <- colorRampPalette(c("dark blue", "blue", "light blue")) (100)
@@ -101,10 +104,10 @@ plot(l2011$B1_sre, col = clblue)
 #esportiamo l'immagine e facciamola apparire nella cartella lab: sorta di magia
 #la funzione si chiama pdf = es banda1.pdf
 #pdf(banda1.pdf) = mancano le "_" perché usciamo da R = path = percorso 
+?pdf
 pdf("banda1.pdf")
 plot(l2011$B1_sre, col = clblue)
-
-dev.off()
+dev.off() #per chiudere
 
 #come facciamo a far capire che vogliamo salvare nella cartella lab
 #perchè all'inizio abbiamo settato la cartella di lavoro
@@ -113,7 +116,30 @@ dev.off()
 #per esempio
 #pdf("~/Downloads/banda1.pfd")
 #senza specificare il path = percorso va dentro alla cartella lab
+?png
+png("banda1.png")
+plot(l2011$B1_sre, col = clblue)
+dev.off() #per chiudere
 
+#plot B2 da dark green a green a light green 
+l2011
+plot(l2011$B2_sre)
+clgreen <- colorRampPalette(c("dark green", "green", "light green")) (100)
+plot(l2011$B2_sre, col = clgreen)
+
+#multiframe = unione di due plot B1 e B2
+par(mfrow = c(1, 2))
+plot(l2011$B1_sre, col = clblue) #plot banda 1 = blue
+plot(l2011$B2_sre, col = clgreen) #plot banda 2 = green
+dev.off() #per chiudere
+
+#se vogliamo fare un pdf con questo oggetto 
+#export multiframe plot #esporto un plot multiframe
+pdf(multiframe.pdf)
+par(mfrow = c(1, 2))
+plot(l2011$B1_sre, col = clblue) 
+plot(l2011$B2_sre, col = clgreen) 
+dev.off()
 
 
 
