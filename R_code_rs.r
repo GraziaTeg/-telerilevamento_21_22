@@ -64,9 +64,22 @@ dev.off()
 #satellitari  = tutte le bande con quella colorRampPalette
 
 #ora plottiamo una singola banda
+#plot della banda del blu [solo una] - B1_sre
 
+#qual è la prima banda? 
+#si mette 
+l2011
+#si va a vedere i nomi della prima banda, in names
+#B1_sre = spectral reflectance
+#il simbolo che lega l'immagine satellitare [l2011] alla banda [B1_sre] è il DOLLARO $
+plot(l2011$B1_sre)
 
-
+#or
+#un altro modo 
+#questa volta andiamo a prendere il primo elemento 
+#e si racchiude in doppia parentesi [[]]
+plot(l2011[[1]])
+#elemento numero 1 = banda blu
 
 
 
