@@ -46,9 +46,28 @@ colorRampPalette(c("black", "grey", "light grey")) (100)
 cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
 #nella funzione plot = l'argomento da inserire come colore = col
 plot(l2011, col = cl)
+#plottato con tutte le bande
 
 #se non fa il grafico mettere dev.off() -> per un problema di grafica = ripulire tutto 
 dev.off()
 
 #18.03.22
+#Banda dalla 1 alla 4
+#Landsat ETM+ [Enhanced Thematic Mapper Plus]
+#b1 = blu
+#b2 = verde
+#b3 = rosso 
+#b4 = infrarosso vicino = NIR 
+ 
+#possiamo fare un plot con le immagine singole e poi tutte insieme 
+#noi abbiamo fatto una colorRampPalette (sopra) e poi abbiamo plottato tutte le immagini
+#satellitari  = tutte le bande con quella colorRampPalette
+
+#ora plottiamo una singola banda
+
+
+
+
+
+
 
