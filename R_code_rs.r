@@ -150,5 +150,23 @@ plot(l2011$B1_sre, col = clblue) #plot banda 1 = blue
 plot(l2011$B2_sre, col = clgreen) #plot banda 2 = green
 dev.off() 
 
+#facciamo un plot con 4 bande
+#let's plot the first four bands
+#ora fare un par con mfrow con tutte e quattro le bande
+#2 righe e 2 colonne 
+#1 riga B1 e B2
+#2 riga B3 e B4
+par(mfrow = c(2, 2))
+#blu
+plot(l2011$B1_sre, col = clblue) 
+#verde
+plot(l2011$B2_sre, col = clgreen) 
+#per B3 = per il rosso 
+clred <- colorRampPalette(c("violet", "red", "pink")) (100)
+plot(l2011$B3_sre, col = clred)
+#per B4 = NIR
+clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot(l2011$B4_sre, col = clnir)
+
 
 
