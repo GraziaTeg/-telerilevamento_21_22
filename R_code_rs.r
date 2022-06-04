@@ -198,7 +198,56 @@ plot(l2011$B4_sre)
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col = clnir)
 
+#plot RGB layers
+plot
+#quando andiamo a fare un plottaggio possiamo solo utilizzare 3 bande per volta
+#R --> rosso = banda B3
+#G --> verde = banda B2
+#B --> blu = banda B1
+#per utilizzare la funzione plot RGB
+?plotRGB #Red-Green-Blue plot of a multi-layered Raster object
+#r = mettendo le bande
+#Landsat ETM+
+#b1 = blu
+#b2 = verde
+#b3 = rosso
+#b4 = infrarosso vicino NIR
+#plotRGB(l2011, r = 3, g = 2, b = 1,)
+#più argomento STRETCH = li ampia per vedere meglio i contrasti lineari ["lin"]
+#o a istogramma ["hist"] = tra virgolette
+plotRGB(l2011, r = 3, g = 2, b = 1, stretch = "lin")
+#immagine che viene fuori si dice a colori naturali 
+#immagine ha una maschera in cui non sono registrati valori (detriti neri)
+#rappresenta la nostra riserva naturale da 800 metri di distanza di come 
+#lo vedrebbe l'occhio umano 
 
+#ora andiamo ad usare anche l'infrarossa 
+#noi possiamo solo usare 3 bande
+#quindi metto 
+#r --> 4 = NIR
+#g --> 3 = rosso 
+#b --> 2 = verde
+plotRGB(l2011, r = 4, g = 3, b = 2, stretch = "lin")
+#non vediamo quello che vede l'uomo 
+#ma vediamo tutto quello che rifletterà nell'infrarosso diventerà di coloro red = rosso 
+#slide 2 pag 20  
+#la pianta riflette moltissimo in infrarosso = perché le cellule del 
+#mesofillo = con tessuto a palizzata (cellule molto robuste una accanto all'altra)
+#e l'angolo di penetrazione = riflette insieme alla banda del verde (quella che vediamo noi)
+#tutto quello che diventa rosso è vegetazione 
+#sembra il polmone 
+#vediamo tutte quelle zone con vegetazione = con singoli pixel con alti valori di 
+#riflettanza nel NIR
+
+#giochino
+#spostiamo l'infrarosso non nella componente del red ma in quella verde
+#r --> 3 = rosso
+#g --> 4 = NIR 
+#b --> 2 = verde
+plotRGB(l2011, r = 3, g = 4, b = 2, stretch = "lin")
+#tutto quello che rifletterà nell'infrarosso vicino (NIR) diventerà 
+#verde fluorescente 
+#risorse delle piante sono: sole e acqua (traspirazione)
 
 
 
