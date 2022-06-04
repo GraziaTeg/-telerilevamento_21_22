@@ -5,6 +5,8 @@
 #richiamiamo la libreria raster
 library(raster)
 
+
+
 #10.03.22
 #richiamiamo la libreria raster
 #installazione
@@ -53,6 +55,8 @@ plot(l2011, col = cl)
 
 #se non fa il grafico mettere dev.off() -> per un problema di grafica = ripulire tutto 
 dev.off()
+
+
 
 #18.03.22
 #Banda dalla 1 alla 4
@@ -167,6 +171,37 @@ plot(l2011$B3_sre, col = clred)
 #per B4 = NIR
 clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
 plot(l2011$B4_sre, col = clnir)
+
+
+
+#24.03.22
+#oggi immagini a colori
+#1 caricare i nostri dati 
+library(raster)
+
+#settaggio working directort = setwd
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
+
+#importazione immagine #p224 = path percorso satellite, r = row, riga
+#incrociando path e row = abbiamo la singola immagine 
+brick("p224r63_2011.grd")
+l2011 <- brick("p224r63_2011.grd")
+l2011
+#importato immagine
+
+#siamo in virtuale nell'area di studio = PARAKANA = 
+#la deforestazione della foresta tropicale 
+
+#esercizio 
+#plot of l2011 in the NIR channel = importare da l2011 solo l'infrarosso vicino = NIR = NIR Band
+plot(l2011$B4_sre)
+clnir <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot(l2011$B4_sre, col = clnir)
+
+
+
+
+
 
 
 
