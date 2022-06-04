@@ -230,14 +230,6 @@ plotRGB(l2011, r = 3, g = 2, b = 1, stretch = "lin")
 plotRGB(l2011, r = 4, g = 3, b = 2, stretch = "lin")
 #non vediamo quello che vede l'uomo 
 #ma vediamo tutto quello che rifletterà nell'infrarosso diventerà di coloro red = rosso 
-#slide 2 pag 20  
-#la pianta riflette moltissimo in infrarosso = perché le cellule del 
-#mesofillo = con tessuto a palizzata (cellule molto robuste una accanto all'altra)
-#e l'angolo di penetrazione = riflette insieme alla banda del verde (quella che vediamo noi)
-#tutto quello che diventa rosso è vegetazione 
-#sembra il polmone 
-#vediamo tutte quelle zone con vegetazione = con singoli pixel con alti valori di 
-#riflettanza nel NIR
 
 #giochino
 #spostiamo l'infrarosso non nella componente del red ma in quella verde
@@ -247,7 +239,39 @@ plotRGB(l2011, r = 4, g = 3, b = 2, stretch = "lin")
 plotRGB(l2011, r = 3, g = 4, b = 2, stretch = "lin")
 #tutto quello che rifletterà nell'infrarosso vicino (NIR) diventerà 
 #verde fluorescente 
-#risorse delle piante sono: sole e acqua (traspirazione)
+
+plotRGB(l2011, r = 3, g = 2, b = 4, stretch = "lin")
+#diventerà blu la componente 
+#si vedono molto bene le zone a suolo nudo
+
+#ora provo HIST sull'infrarosso sul verde 
+plotRGB(l2011, r = 3, g = 4, b = 2, stretch = "hist")
+
+#esercizio: build a multiframe with visible RGB 
+#(linear stretch) on top of false colour
+#(histogram stretch)
+#costruire un multiframe con visualizzazione a colori naturali 
+#stretch lineare = visibile normale = sopra
+#stretch istogramma = a falsi colori a infrarosso = sotto 
+par(mfrow = c(2, 1))
+plotRGB(l2011, r = 3, g = 2, b = 1, stretch = "lin")
+plotRGB(l2011, r = 3, g = 4, b = 2, stretch = "hist")
+
+#esercizio = carichiamo l'immagine del 1988 #upload the image from 1988
+brick("p224r63_1988.grd")
+l1988 <- brick("p224r63_1988.grd")
+l1988
+#come era la riserva del Parakana nel 1988
+#facciamo un multiframe
+#sopra 4 3 2 del 1988
+#sotto 4 3 2 del 2011
+par(mfrow = C(2, 1))
+plotRGB(l1988, r = 4, g = 3, b = 2, stretch = "lin")
+plotRGB(l2011, r = 4, g = 3, b = 2, stretch = "lin")
+
+
+
+
 
 
 
