@@ -34,3 +34,17 @@ l2006 <- brick("defor2_.jpg")
 l2006
 plotRGB(l2006, r = 1, g = 2, b = 3, stretch = "lin")
 
+#exercise: 
+#plot in a multiframe the two images with one on top of the other
+#fare un multiframe 
+#due immagini 
+#sopra = l1992
+#sotto = l2006
+#quindi sono 2 righe e 1 colonna
+par(mfrow = c(2, 1))
+plotRGB(l1992, r = 1, g = 2, b = 3, stretch = "lin")
+plotRGB(l2006, r = 1, g = 2, b = 3, stretch = "lin")
+
+
+#facciamo il calcolo di un indice spettrale
+#DVI = Difference Vegetation Index
