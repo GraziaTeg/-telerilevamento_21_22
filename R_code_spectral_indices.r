@@ -48,3 +48,50 @@ plotRGB(l2006, r = 1, g = 2, b = 3, stretch = "lin")
 
 #facciamo il calcolo di un indice spettrale
 #DVI = Difference Vegetation Index
+dvi1992 = l1992[[1]] - l1992[[2]]
+dvi1992
+
+#facciamo un plot di questo dato del DVI 1992
+cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100)
+plot(dvi1992, col = cl)
+
+
+#ora andiamo a fare 2006 
+#bande sempre le stesse
+dvi2006 = l2006[[1]] - l2006[[2]]
+dvi2006
+#facciamo un plot di questo dato del DVI 2006
+cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100)
+plot(dvi2006, col = cl)
+
+#c'è un altro metodo per il calcolo della DVI 
+#invece di usare gli elementi [[1]] e [[2]]
+#possiamo usare i nomi 
+dvi1992 = l1992$defor1_.1 - l1992$defor1_.2
+dvi1992
+cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100)
+plot(dvi1992, col = cl)
+dvi2006 = l2006$defor1_.1 - l2006$defor1_.2
+dvi2006
+cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100)
+plot(dvi2006, col = cl)
+
+#DVI 1992 = abbiamo della vegetazione 
+#DVI 2006 = abbiamo meno vegetazione ma più deforestazione 
+#ora facciamo la differenza tra 
+#DVI1992 - DVI2006 = otteniamo la differenza di DVI 
+#la differenza di DVI = dvi_dif
+#DVI difference in time 
+dvi_dif = div1992 - dvi2006
+cld <- colorRampPalette(c("blue", "white", "red"))(100)
+
+#mi da un warning, non errore = ci sono magari nel bordo esterno, visto che sono immagini esportate
+#non importa 
+#Warning message:
+#In dvi1992 - dvi2006 :
+#  Raster objects have different extents. Result for their intersection is returned
+#facciamo il plot
+dev.off()
+plot(dvi_dif, col = cld)
+
+
