@@ -81,3 +81,26 @@ tgr
 #plot con lo stesso colorRampPalette
 plot(tgr, col = cl)
 
+#ora se vogliamo plottare anche il primo elemento dello stack 
+#o con $ o elemento 
+plot(tgr$lst_2000, col = cl)
+#oppure
+plot(tgr[[1]], col = cl)
+
+#plotRGB
+#lst_2000 ==> R
+#lst_2005 ==> G
+#lst_2010 ==> B
+?plotRGB #con sintassi
+plotRGB(tgr, r = 1, g = 2, b = 3, stretch = "lin")
+
+#########################
+#?colorist 
+#colorazione delle specie 
+
+#########################
+
+
+
+
+
