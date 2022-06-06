@@ -30,6 +30,54 @@ raster("lst_2015.tif")
 lst2015 <- raster("lst_2015.tif")
 lst2015
 
+#creiamo una nostra colorRampPalete
+cl <- colorRampPalette(c("blue", "light blue", "pink", "red")) (100)
 
+#exercise: multiframe con 4 dati = 2 righe e 2 colonne
+par(mfrow = c(2, 2))
+plot(lst2000, col = cl)
+plot(lst2005, col = cl)
+plot(lst2010, col = cl)
+plot(lst2015, col = cl)
 
+#come importare questo set tutto insieme
+?lapply
+
+#utilizzeremo tanto 
+?list.files #list dot files
+#lista di file = dire in che cartella deve prenderli 
+#parametro importante è il pattern = serve per spiegare una caratteristica 
+#comune di tutti i file che vogliamo caricare
+
+#import the whole set altogether!
+#1. fare la lista del file = con list.files
+list.files(pattern = "lst")
+rlist <- list.files(pattern = "lst")
+rlist
+
+#la lista si chiama rlist
+#ora il raster 
+lapply(rlist, raster)
+import <- lapply(rlist, raster)
+import
+
+#stack = mette tutto insieme
+?stack
+#blocco comune di tutti i dati 
+#stack di import
+stack(import)
+#altro nome tgr = temperation greenland
+tgr <- stack(import)
+tgr
+#raster stack tutto insieme 
+#brick = importavamo per immagine satellitare
+#stack = per singoli dati 
+
+#layer 4 = con valori 65535
+#invece di fare il multiframe 
+#io faccio una lista -> applico la funzione lapply che mi applica alla funzione
+#raster alla lista e poi faccio uno stack
+
+#plot con lo stesso colorRampPalette
+plot(tgr, col = cl)
 
