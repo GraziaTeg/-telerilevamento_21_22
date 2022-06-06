@@ -194,6 +194,29 @@ plot(si1992, col = cl)
 si2006 <- spectralIndices(l2006, green = 3, red = 2, nir = 1)
 plot(si2006, col = cl)
 
+#copernicus
+#NDVI a scala globale, il prof lo ha già inserito nel pacchetto ma dobbiamo
+#partire dai dati COPERNICUS
+#il pacchetto = per la misura della diversità dalla spazio 
+#si chiama RASTERDIV
+#?rasterdiv #https://cran.r-project.org/web/packages/rasterdiv/index.html
+#del prof
+#in ogni pacchetto c'è un manuale e poi ci sono anche le vignettes
+#rasterdiv = perché è la diversità misurata su dati raster partendo 
+#dell'ecologia di comunità = branca dell'ecologia che misura la diversità
+#all'interno delle comunità di gruppi di organismi di varie specie che convivono 
+#insieme 
+
+####################
+#RASTERDIV
+install.packages("rasterdiv")
+library(rasterdiv)
+install.packages("rasterdiv")
+#una volta installato il pacchetto
+library(rasterdiv)
+
+#facciamo il plot
+plot(copNDVI)
 
 
 
