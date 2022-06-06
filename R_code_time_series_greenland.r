@@ -94,11 +94,59 @@ plot(tgr[[1]], col = cl)
 ?plotRGB #con sintassi
 plotRGB(tgr, r = 1, g = 2, b = 3, stretch = "lin")
 
+
 #########################
 #?colorist 
 #colorazione delle specie 
 
+
 #########################
+#exercise2: NO2 decrease during the lockdown 
+#sentinel data on nitrogen during lockdown dell'Esa
+#
+#scaricare dati EN.zip
+#EN = European nitrogen
+#importiamo i dati tramite list.files, lapply, stack
+
+#sul satelliti sentinel = dentro a Copernicus, c'è un satellite con 
+#sensore = che è sentinel = sensore di 10 m 
+#all'interno del Sentinel = sensore che misura gli ossidi di azoto 
+#uso dati 
+
+#oggi analisi con la riduzione di ossidi di azoto
+#carichiamo il pacchetto raster
+library(raster)
+#settiamo la cartella di lavoro 
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab/EN")
+library(raster)
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab/EN")
+
+#1 file 
+raster("EN_0001.png")
+en01 <- raster("EN_0001.png")
+en01
+#plottiamo 
+cl <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot (en01, col = cl)
+
+#andiamo a vedere il 13 dato 
+raster("EN_0013.png")
+en13 <- raster("EN_0013.png")
+en13
+cl <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot (en13, col = cl)
+#a marzo 
+#si vede molto bene la differenza 
+
+#ora importiamo tutto il data set insieme = let's import the whole set (altogether!)
+#exercise: impost the whole as in the Greenland example
+#by the following steps: list.files, lapply, stack
+
+
+
+
+
+
 
 
 
