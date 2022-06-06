@@ -141,14 +141,37 @@ plot (en13, col = cl)
 #ora importiamo tutto il data set insieme = let's import the whole set (altogether!)
 #exercise: impost the whole as in the Greenland example
 #by the following steps: list.files, lapply, stack
+list.files(pattern = "EN")
+rlist <- list.files(pattern = "EN")
+#lapply(X, FUN)
+lapply(rlist, raster)
+rimp <- lapply(rlist, raster) #mettere la rimp = importare
+rimp
+#stack
+stack(rimp)
+en <- stack(rimp)
+en
+#plottiamo
+plot(en, col = cl)
+#sono tutte insieme
 
+#esercizio = plottiamo EN01 vicino EN13
+#se voglio mettere insieme
+par(mfrow = c(1, 2))
+plot(en[[1]], col = cl)
+plot(en[[13]], col = cl)
+#oppure
+par(mfrow = c(1, 2))
+plot(en[[1]], col = cl)
+plot(en[[13]], col = cl)
 
-
-
-
-
-
-
-
+#oppure 
+#faccio uno stack
+stack(en[[1]], en[[13]])
+en113 <- stack(en[[1]], en[[13]])
+en113 #del 1 e del 13
+#invece di fare un multiframe = pesco solo il 1 e 13
+#poi plot
+plot(en113, col = cl)
 
 
