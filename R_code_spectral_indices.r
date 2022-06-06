@@ -94,4 +94,61 @@ cld <- colorRampPalette(c("blue", "white", "red"))(100)
 dev.off()
 plot(dvi_dif, col = cld)
 
+#8 BIT
+#Range DVI (8 BIT): -255 a 255
+#Range NDVI (8 BIT): -1 a 1
+#NDVI = normalizzato o standardizzato 
+
+#16 BIT 
+#Range DVI (16 BIT): -65535 a 65535
+#Range NDVI (16 BIT): -1 a 1
+
+#NDVI può essere usato anche con immagini con risoluzione radiometrica differente 
+#[risoluzione radiometrica --> quanti bit ci sono a disposizione di un immagine]
+
+#ora calcoliamo NDVI = per le immagini 
+#carichiamo la libreria raswte
+library(raster) #raster = rastrum = aratro
+
+#settiamo la Working directory
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
+
+#importo le due immagini l1992 e l2006
+brick("defor1_.jpg")
+l1992 <- brick("defor1_.jpg")
+l1992
+brick("defor2_.jpg")
+l2006 <- brick("defor2_.jpg")
+l2006
+#sono tutti e due 8 BIT
+
+#calcolo 
+#DVI = calcolo o con nome o con elementi 
+dvi1992 = l1992[[1]] - l1992[[2]]
+#dvi = riflettanza NIR - riflettanza R
+dvi1992
+
+#NDVI 
+#1 banda = NIR
+#2 banda = RED
+#NDVI 1992
+#con parentesi che racchiudono numeratore e denominatore
+ndvi1992 = (l1992[[1]] - l1992[[2]]) / (l1992[[1]] + l1992[[2]])
+ndvi1992
+#oppure
+ndvi1992 = dvi1992 / (l1992[[1]] + l1992[[2]])
+ndvi1992
+
+#ora facciamo un plot
+cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100)
+plot(ndvi1992, col = cl) #col = colorRampPalette
+
+#esercizio = multiframe with plotRGB on top pf the NDVI image
+#fare un multiframe con il plotRGB dell'immagine sopra [dalla scorsa volta]
+#e l'NDVI sotto
+par(mfrow = c(2, 1)) #due righe e una colonna
+plotRGB(l1992, r = 1, g = 2, b = 3, stretch = "lin")
+plot(ndvi1992, col = cl)
+
+#2006
 
