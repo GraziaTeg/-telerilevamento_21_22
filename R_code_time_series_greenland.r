@@ -174,4 +174,12 @@ en113 #del 1 e del 13
 #poi plot
 plot(en113, col = cl)
 
+#let's make the difference:
+difen <- en[[1]] - en[[13]] #anche al contrario si può fare
+difen
+#differenza varia tra -255 a +255
+#plottiamo 
+#nuova colorRampPalette
+cldif <- colorRampPalette(c("blue", "white", "red")) (100)
+plot(difen, col = cldif)
 
