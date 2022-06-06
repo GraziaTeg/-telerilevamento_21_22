@@ -150,5 +150,50 @@ par(mfrow = c(2, 1)) #due righe e una colonna
 plotRGB(l1992, r = 1, g = 2, b = 3, stretch = "lin")
 plot(ndvi1992, col = cl)
 
+#ora facciamo il 2006
+dvi2006 = l2006[[1]] - l2006[[2]]
+dvi2006
+
+#NDVI 2006
+ndvi2006 = (l2006[[1]] - l2006[[2]]) / (l2006[[1]] + l2006[[2]])
+ndvi2006
+#oppure
+ndvi2006 = dvi2006 / (l2006[[1]] + l2006[[2]])
+ndvi2006
+#fare un multiframe con il NDVI1992 dell'immagine sopra e NDVI2006 sotto
+#usando sempre questa colorRampPalette
+#cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100)
+par(mfrow = c(2, 1))
+plot(ndvi1992, col = cl)
+plot(ndvi2006, col = cl)
+
+################################
+#nuova liberia
+?RStoolbox
+install.packages("RStoolbox")
+library(RStoolbox)
+?spectralIndices
+
+#Automatic spectral indices by the spectralTindeces function
+library(RStoolbox)
+install.packages("RStoolbox")
+?RStoolbox
+library(RStoolbox)
+?spectralIndices
+#1 banda = NIR
+#2 banda = red
+#3 banda = green
+#ora possiamo usare la funzione spectralIndices = si
+si1992 <- spectralIndices(l1992, green = 3, red = 2, nir = 1)
+
+#andiamo a visualizzare i nostri indici 
+#cl <- colorRampPalette(c("dark blue", "yellow", "red", "black")) (100) sempre uguale 
+plot(si1992, col = cl)
+
 #2006
+si2006 <- spectralIndices(l2006, green = 3, red = 2, nir = 1)
+plot(si2006, col = cl)
+
+
+
 
