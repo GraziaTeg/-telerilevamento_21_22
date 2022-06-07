@@ -118,8 +118,6 @@ plotRGB(tgr, r = 1, g = 2, b = 3, stretch = "lin")
 library(raster)
 #settiamo la cartella di lavoro 
 setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab/EN")
-library(raster)
-setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab/EN")
 
 #1 file 
 raster("EN_0001.png")
@@ -182,4 +180,76 @@ difen
 #nuova colorRampPalette
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 plot(difen, col = cldif)
+
+
+##############################
+#08.03.22
+#tutti i codici della scorsa volta
+
+#oggi andiamo a utilizzare una funzione che serve per utilizzare codice
+#che deriva da altre fonti 
+#scritto su git hub poi R
+?source
+#prendere file salvare e lo richiamiamo da r direttamente senza aprirlo
+#su git hub codice a disposizione 
+library(raster)
+#facciamo il settaggio 
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab/EN")
+#poi carichiamo l'immagine 
+en01 <- raster("EN_0001.png")
+#plot
+cl <- colorRampPalette(c("red", "orange", "yellow")) (100)
+plot (en01, col = cl)
+
+#ora mettiamo tutto in un editor di testo 
+#es. blocco note 
+#e simuliamo un codice che ci arriva da un collega
+
+#salvato nella cartella di lab 
+#come R_inputcode.R
+#evitare.doc
+
+#andiamo su R 
+#fare solo il settaggio della working directory 
+#con lab solo 
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
+
+#la funzione è source
+
+#exercise: use source function and upload the code
+#funzione source e mettere il nome del file
+source("R_inputcode.r")
+#viene fuori l'immagine = solo scrivendo source
+
+
+#########################################
+#ora rimportiamo i dati e facciamo un plot di RGB di 3 immagini dei dati 
+#che abbiamo a disposizione
+#dati si possono anche importare
+#con una list.files con vari file
+#funzione lapply alla lista
+#e poi un altra funzione con raster
+#e unire tutti insieme che si chiama stack
+list.files(pattern = "EN")
+rlist <- list.files(pattern = "EN")
+rlist
+lapply(rlist, raster)
+rimp <- lapply(rlist, raster)
+rimp
+stack(rimp)
+en <- stack(rimp)
+en
+#plot di tutto lo stack
+plot(en, col = cl)
+
+#visualizziamo tutte le immagini 
+
+#ora facciamo un plotRGB con 3 file insieme
+#plotRGB of three files together
+?plotRGB
+#R = [[1]]
+#G = [[7]]
+#B = [[13]]
+plotRGB(en, r = 1, g = 7, b = 13, stretch = "lin")
+plotRGB(en, r = 1, g = 7, b = 13, stretch = "hist")
 
