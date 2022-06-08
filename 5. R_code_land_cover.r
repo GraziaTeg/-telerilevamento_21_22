@@ -192,7 +192,6 @@ perc_agr_92_2
 #percent_forest_92 = 88.98309
 #percent_agr_92 = 11.01691
 
-
 #percentuale 2006
 tot_06 <- 342726
 percent_forest_06 <- 179246 * 100 / tot_06
@@ -202,3 +201,57 @@ percent_forest_06
 percent_agr_06 <- 100 - percent_forest_06
 percent_agr_06
 #[1] 47.69991
+
+#dati finali 
+#FINAL DATA:
+#percent_forest_92 = 88.98309 = 88.98
+#percent_agr_92 = 11.01691 = 11.02
+#percent_forest_06 = 52.30009 = 52.30
+#percent_agr_06 = 47.69991 = 47.70
+
+#possibilità di creare un dataframe [una tabella]
+#con 3 colonne = campo
+#1 colonna = classe ==> class = forest e agricoltur
+#2 colonna = valori percentuali del 1992 ==> %92
+#3 colonna = valori percentuali del 2006 ==> %06
+
+#mettere sempre il punto non le virgole 
+
+#let's build a dataframe with our data = costruiamo un dataframe con i nostri dati
+#= costruiamo un dataframe con i nostri dati #columns (fields) = campi 
+#class <- Forest, Agriculture #2 elementi dello stesso gruppo = vettore o arrey
+#"_" perchè è un testo #evitare simboli
+class <- c("Forest, Agriculture") 
+percent_1992 <- c(88.98309, 11.01691)
+percent_2006 <- c(52.30009, 47.69991)
+#dichiarato colonne #ora creare tabella = database = tabella = dataframe
+?data.frame
+#data.frame e nome delle colonne della tabella
+#data.frame(class, percent_1992, percent_2006) #assocciamo a un nome
+multitemporal <- data.frame(class, percent_1992, percent_2006)
+#analisi multitemporale che conduce alla tabella 
+multitemporal
+#                class percent_1992 percent_2006
+#1 Forest, Agriculture     88.98309     52.30009
+#2 Forest, Agriculture     11.01691     47.69991
+
+#valori in formato tabella 
+#con la funzione View
+View(multitemporal)
+
+#1992
+?ggplot
+ggplot(multitemporal, aes(x = class, y = percent_1992, color = class)) + geom_bar(stat = "identity", fill = "white")
+#a me non viene uguale al prof su RStudio #ma su R viene
+#exercise: make the same graph for 2006 = stesso grafico per il 2006
+ggplot(multitemporal, aes(x = class, y = percent_2006, color = class)) + geom_bar(stat = "identity", fill = "white")
+
+#fare il pdf = viene salvato nel lab
+#1992
+pdf("percentages_1992.pdf")
+ggplot(multitemporal, aes(x = class, y = percent_1992, color = class)) + geom_bar(stat = "identity", fill = "white")
+dev.off()
+#2006
+pdf("percentages_2006.pdf")
+ggplot(multitemporal, aes(x = class, y = percent_2006, color = class)) + geom_bar(stat = "identity", fill = "white")
+dev.off()
