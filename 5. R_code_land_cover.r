@@ -123,5 +123,82 @@ freq(l92c$map)
 #diverso dal prof = 305213 foresta classe 1 e 36079 = agricoltura classe 2
 
 
+################################
+library(raster)
+library(RStoolbox)
+library(ggplot2)
+library(patchwork)
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
+
+#inserito due immagini = infrarosso nellal componente verde
+brick("defor1_.jpg") 
+l92 <- brick("defor1_.jpg")
+l92
+plotRGB(l92, 1, 2, 3, stretch= "lin")
+brick("defor2_.jpg")
+l06 <- brick("defor2_.jpg")
+l06
+plotRGB(l06, 1, 2, 3, stretch= "lin")
+
+#mappe
+unsuperClass(l92, nClass = 2)
+l92c <- unsuperClass(l92, nClasses = 2)
+l92c 
+dev.off()
+plot(l92c$map)
+unsuperClass(l06, nClass = 2)
+l06c <- unsuperClass(l06, nClasses = 2)
+l06c 
+dev.off()
+plot(l06c$map)
+
+#frequenza
+?freq
+freq(l92c$map)
+#value  count
+#[1,]     1  36799 = agricola
+#[2,]     2 304493 = foresta
+freq(l06c$map)
+#value  count
+#[1,]     1 179246 = foresta
+#[2,]     2 163480 = agricola 
+#dai numeri si capisce come è cambiata nel tempo 
+
+#1992
+tot92 <- 342192
+#proporzione
+prop_forest_92 <- 304493 / tot92
+prop_forest_92
+#[1] 0.8898309
+#con %
+perc_forest_92 <- 304493 * 100 / tot92
+perc_forest_92
+#[1] 88.98309 = 89%
+
+#exercise: calculate the percentage of agricultural areasin 1992
+#percentuale agricolo 92
+#tanti modi 
+#1. metodo
+perc_agr_92 <- 100 - perc_forest_92
+perc_agr_92
+#[1] 11.01691
+
+#2. metodo
+perc_agr_92_2 <- 36799 * 100 / tot92
+perc_agr_92_2
+#[1] 10.7539
+#i due metodi non mi vengono uguali 
+
+#percent_forest_92 = 88.98309
+#percent_agr_92 = 11.01691
 
 
+#percentuale 2006
+tot_06 <- 342726
+percent_forest_06 <- 179246 * 100 / tot_06
+percent_forest_06
+# [1] 52.30009
+
+percent_agr_06 <- 100 - percent_forest_06
+percent_agr_06
+#[1] 47.69991
