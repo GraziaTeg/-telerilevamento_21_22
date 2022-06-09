@@ -146,4 +146,5 @@ ggplot() +
 
 #riprendiamo prossima volta
 
+#03.05.22
 
