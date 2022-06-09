@@ -47,3 +47,10 @@ g1 + g2
 
 #calculation of variability over NIR = calcolo della variabilità rispetto al NIR
 nir <- ser[[1]]
+nir 
+#prima banda 
+
+#faccio il plot nir
+plot(nir)
+
+
