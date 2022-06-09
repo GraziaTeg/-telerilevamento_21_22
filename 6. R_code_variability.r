@@ -133,6 +133,17 @@ ggplot() +
 #noi abbiamo utilizzato la finestra 3*3 = possiamo anche aumentare
 #la finestra come 5*5, 7*7, 9*9,...
 
-#esxercise: make the same calculation with a 7x7 window = fare lo stesso calcolo con una finestra 7x7
+#exercise: make the same calculation with a 7x7 window = fare lo stesso calcolo con una finestra 7x7
+##fare lo stesso calcolo con una finestra 7x7
+#7 * 7 = 49
+#sd = deviazione standard
+
+#jamboard [4]
+
+#il problema è che non si mette la FUNZIONE COME L'OGGETTO 
+#sd = sd 
+#ora correggere tutto il nome con sd3 tranne nella fun sd
+
+#riprendiamo prossima volta
 
 
