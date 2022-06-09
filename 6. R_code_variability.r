@@ -146,5 +146,110 @@ ggplot() +
 
 #riprendiamo prossima volta
 
+#16
 #03.05.22
 
+#misura dell'eterogeneità #es foresta tropicale = ogni piante ricerca le proprie risorse [in luce e acqua]
+#queste zone eterogeneità al massimo #etoregeneità più alta dove ci sono più specie in un certo ambiente
+#ognuna ha una propria riflettanza #eterogeità dall'alto #eterogenità = deviazione standard
+
+#sentinel = ghiacciaio del Similaun
+#acqua assorbe molto l'infrarosso 
+
+#immagini salvate la scorsa volta
+#guardare la cartella 15. 29.04.22
+#usiamo ggplot
+library(raster) 
+library(RStoolbox) # for image viewing and variability calculation
+library(ggplot2) # for ggplot plotting +anche ggRGB
+library(patchwork)# multiframe with ggplot2 graphs
+library(viridis)
+
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
+brick("sentinel.png")
+sen <- brick("sentinel.png")
+sen
+#banda 1 = NIR
+#banda 2 = red
+#banda 3 = green
+ggRGB(sen, 1, 2, 3, stretch = "lin")
+ggRGB(sen, 1, 2, 3)
+g1 <- ggRGB(sen, 1, 2, 3)
+g1
+#NIR nella parte green 
+#vegetazione = verde
+ggRGB(sen, 2, 1, 3)
+g2 <- ggRGB(sen, 2, 1, 3)
+g2
+library(patchwork)
+#immagini uno accanto all'altro 
+ggRGB(sen, 1, 2, 3)
+g1 <- ggRGB(sen, 1, 2, 3)
+g1
+ggRGB(sen, 2, 1, 3)
+g2 <- ggRGB(sen, 2, 1, 3)
+g2
+g1 + g2
+#exercise: plot one graph on top of the other = uno sopra all'altro 
+g1/g2
+#oppure
+(g1+g2)/(g1+g2)
+#12 e 12
+
+#calculation of variability over NIR
+#NIR = primo elemento dell'immagine Sentinel 
+nir <- sen[[1]]
+nir
+plot(nir)
+
+#focal 
+#finesta
+?focal
+focal(nir, w=matrix(1/9, 3, 3), fun = sd)
+sd3 <- focal(nir, matrix(1/9, 3, 3), fun = sd)
+sd3
+plot(sd3)
+clsd <- colorRampPalette(c("blue", "green", "pink", "magenta", "orange", "brown", "red", "yellow")) (100)
+plot(sd3, col = clsd)
+
+#ora ggplot
+#prima vuoto 
+#ggplot() + geome_raster(sd3, mapping = aes(x=x, y=y, fill = layer))
+#estetiche = parametri per mappare la carta
+#install.packages("viridis")
+library(viridis)
+ggplot() + 
+  geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer))
+?viridis
+ggplot() + 
+  geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) + 
+  scale_fill_viridis() +
+  ggtitle("Standard deviation by viridis")
+#con cividis
+ggplot() + 
+  geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) + 
+  scale_fill_viridis(option = "cividis") +
+  ggtitle("Standard deviation by viridis")
+#magma
+ggplot() + 
+  geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) + 
+  scale_fill_viridis(option = "magma") +
+  ggtitle("Standard deviation by viridis")
+#inferno
+ggplot() + 
+  geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) + 
+  scale_fill_viridis(option = "inferno") +
+  ggtitle("Standard deviation by viridis")
+#inferno lavora moltissimo sulla differenza dei massimi e oscura di più il minimo
+#immagine perfetta per la misura della variabilità
+
+#se aumentiamo la finestra a 7
+#exercise. make tha same calculation with a 7*7 window
+#focal(nir, w=matrix(1/49, 7, 7), fun = sd)
+#sd7 <- focal(nir, matrix(1/49, 7, 7), fun = sd)
+#sd7
+#plot(sd7)
+#clsd <- colorRampPalette(c("blue", "green", "pink", "magenta", "orange", "brown", "red", "yellow")) (100)
+#plot(sd7, col = clsd)
+
+#ora non lo facciamo 
