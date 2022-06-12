@@ -193,4 +193,48 @@ summary(p224r63_2011respca$model)
 #fare plot = per vedere tutte le componenti 
 plot(p224r63_2011respca$map)
 
+#vediamo che la prima PC1 
+#è quella che ha èiù informazioni di tutte 
+#l'ultima è quella che ha solo rumore
 
+#usiamo la prima componente principale = PC1
+#prima facciamo un plottaggio tra la prima componente e la 7
+#con nomi giusti 
+#facciamo un ggplot
+library(viridis)
+?viridis
+ggplot() + 
+  geom_raster(p224r63_2011respca$map, mapping =aes(x=x, y=y, fill=PC1)) + 
+  scale_fill_viridis(option = "cividis") +
+  ggtitle("PC1")
+#fill = vogliamo mappare la PC1 
+#prima componente principale con la legenda cividis
+
+#i valori più alti sono quelli nel giallo 
+#la variabilità dell'immagine si vede bene 
+
+#pixel un pò sgranata perchè abbiamo usato l'immagine decampionata
+
+#proviamo ad utilizzare magma o inferno 
+#magma
+ggplot() + 
+  geom_raster(p224r63_2011respca$map, mapping =aes(x=x, y=y, fill=PC1)) + 
+  scale_fill_viridis(option = "magma") +
+  ggtitle("PC1")
+#inferno
+ggplot() + 
+  geom_raster(p224r63_2011respca$map, mapping =aes(x=x, y=y, fill=PC1)) + 
+  scale_fill_viridis(option = "inferno") +
+  ggtitle("PC1")
+
+#andiamo a plottare anche la 7
+ggplot() + 
+  geom_raster(p224r63_2011respca$map, mapping =aes(x=x, y=y, fill=PC7)) + 
+  scale_fill_viridis(option = "inferno") +
+  ggtitle("PC7")
+#la differenza tra PC1 e PC7 si nota 
+#non c'è tanta informazione 
+#c'è più rumore inconsistente 
+#non si nota tutte l'immagine 
+
+#mettiamo l'accanto = PC1 e PC2
