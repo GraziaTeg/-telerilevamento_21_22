@@ -237,4 +237,129 @@ ggplot() +
 #c'è più rumore inconsistente 
 #non si nota tutte l'immagine 
 
-#mettiamo l'accanto = PC1 e PC2
+#mettiamo uno vicino all'altro = PC1 e PC7
+#assegnando il nome 
+#g1 = PC1
+#g2 = PC7
+g1 <- ggplot() + 
+  geom_raster(p224r63_2011respca$map, mapping =aes(x=x, y=y, fill=PC1)) + 
+  scale_fill_viridis(option = "inferno") +
+  ggtitle("PC1")
+g2 <- ggplot() + 
+  geom_raster(p224r63_2011respca$map, mapping =aes(x=x, y=y, fill=PC7)) + 
+  scale_fill_viridis(option = "inferno") +
+  ggtitle("PC7")
+g1 + g2
+
+#sugli assi ci sono le coordinate originali 
+#nel PC7 -> -500000 sulla Y distanza dall'equatore = qui sotto all'equatore
+#nel PC7 -> sulla X distanza meridiano centrale di ogni fuso 
+#l'immagine PC1 = conserva gran parte dell'informazione iniziale 
+#immagine PC7 = perde tutte le informazioni = rumore di fondo continuo
+#asse molto bassa
+
+#nella PCA i valori minimi e i valori massimi = in legenda
+#sono nuovi valori riscalati su quella banda li
+#il significato di questi valori sono reali 
+#a differenza delle bande = dove sono valori di riflettanza
+
+#questa può essere correlata al vicino infrarosso = NIR
+#lo assegnamo a g3
+#immagine originale
+#nel fill = mettere B4_sre = che è il nome dell'immagine per vederla = p224r63_2011res
+#e ti da il nome dell'immagine dell'infrarosso 
+g3 <- ggplot() + 
+  geom_raster(p224r63_2011res, mapping =aes(x=x, y=y, fill=B4_sre)) + 
+  scale_fill_viridis(option = "inferno") +
+  ggtitle("PC1")
+#g3 = NIR
+g1 + g3 
+#dove la riflettanza nel NIR è più alta la PC1 è più bassa
+#sono inversamente correlati 
+#NIR infrared, ha più informazioni di tutte le bande, di solito
+#le correlazioni sono anche piutosto alte
+
+#es sulla destra = valore effettivo di riflettanza 
+#riflettanza = rapporto tra la radiazione incidente al denominatore
+#e quella che viene riflessa al numeratore
+#da 0 a 0.4
+#nel PC1 i numeri non hanno un significato di per se perché
+#abbiamo riscalato i valori su un altro asse 
+
+
+#possiamo farlo anche con un ggRGB
+#con imamgine ricampionata p224r63_2011res
+#R = 4 NIR
+#G = 3 RED
+#B = 2 GREEN
+ggRGB(p224r63_2011res, 4, 3, 2)
+g4 <- ggRGB(p224r63_2011res, 4, 3, 2)
+g4
+g1 + g4
+#è ricampionata e non si vede bene 
+#la parte di foresta corrisponde ai valori bassi della PCA
+
+#se io invece dell'immagine ricampionata ci metto quella originale 
+#= p224r63_2011
+ggRGB(p224r63_2011, 4, 3, 2)
+g5 <- ggRGB(p224r63_2011, 4, 3, 2)
+g5
+g1 + g5
+#si vede un pelo meglio 
+#proviamo a mettere l'infrarosso nel blu 
+ggRGB(p224r63_2011, 2, 3, 4)
+g6 <- ggRGB(p224r63_2011, 2, 3, 4)
+g6
+g1 + g6
+#tutto quello che è vegetazione è blu = a dx
+#e il suolo nudo è questo giallo nella PC1 
+
+#meglio un plotRGB
+plotRGB(p224r63_2011, 2, 3, 4, stretch = "lin")
+#non posso unirlo 
+#la parte centrale con la parte di vegetazione 
+#parti con suolo nudo = più chiaro 
+#la PCA contiene gran parte dell'informazione 
+#praticamente la stessa cosa 
+#avevamo l'immagine con tante bande l'abbiamo compattata 
+#con un immagine con una banda sola
+
+#in ggRGB = se non dichiaro lo stretch = con poche informazioni 
+#se metto lo stretch = aumento 
+ggRGB(p224r63_2011, 2, 3, 4, stretch = "hist")
+g7 <- ggRGB(p224r63_2011, 2, 3, 4, stretch = "hist")
+g7
+#così si vede il contrasto 
+#proviamo a unirli 
+g1 + g7
+#la PC1 è molto simili all'immagine originale 
+#è inversamente correlata la vegetazione 
+#PC1 = valori più bassi, a dx valori più alti nella vegetazione 
+#PC1 = immagine originale 
+#perché rappresenta il 99% della varianza 
+
+#ora usare il plotRGB = con le prime tre componenti principali 
+#plotRGB = con tutti i dati 
+
+plotRGB(p224r63_2011respca$map, 1, 2, 3, stretch = "lin")
+
+#nuova situazione 
+#il massimo di informazioni che possiamo avere 
+#si vede bene la variazione da un punto a un altro 
+#possiamo usare focal = per calcolare la variabilità 
+#non è una rappresentazione che ci porta dei colori a un significato 
+#sono solo le prime 3 componenti = spiegano il 99.83% della variabilità totale 
+
+#se mettiamo le ultime 3 
+#il livello di informazione è più basso 
+plotRGB(p224r63_2011respca$map, 5, 6, 7, stretch = "lin")
+#situazione strana
+#tanto rumore
+
+#ora usiamo la PC1 per fare il calcolo della variabilità dell'immagine Similaun
+
+
+
+
+
+
