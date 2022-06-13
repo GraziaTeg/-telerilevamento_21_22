@@ -5,6 +5,8 @@
 #= PC1 e su quella facciamo il calcolo
 library(raster)
 library(RStoolbox)
+library(ggplot2)
+
 #settaggio
 setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
 brick("sentinel.png")
