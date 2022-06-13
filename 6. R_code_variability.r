@@ -4,6 +4,10 @@ library(raster)
 library(RStoolbox) #for image viewing and variability calculation 
 #per la visualizzazione delle immagini e il calcolo della variabilità
 library(ggplot2) #for ggplot plotting
+library(patchwork)
+#settaggio della cartella 
+setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
+
 
 #Exercise: import the Similaun image
 
