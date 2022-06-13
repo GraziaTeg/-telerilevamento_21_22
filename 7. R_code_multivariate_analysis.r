@@ -3,6 +3,8 @@
 #quali libreria usiamo:
 library(raster)
 library(RStoolbox)#contiene le funzione per fare l'analisi multivariata
+library(ggplot2)
+library(patchwork)
 
 #settaggio della cartella 
 setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
