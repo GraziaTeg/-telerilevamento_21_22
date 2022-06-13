@@ -2,6 +2,7 @@
 #codice per la generazione di mappe di copertura del suolo da immagini satellitari
 library(raster)
 library(RStoolbox) #funzioni per la classificazione 
+library(ggplot2)
 setwd("D:/UNIVERSITA' MAGISTRALE/1 ANNO/2 SEMESTRE/TELERILEVAMENTO GEO-ECOLOGICO/R/3. 10.03.22/lab")
 #su Virtuale -> immagini -> defor1_.jpg e defor2_.jpg [del Rio Peixoto = in Brasile]
 #immagini del 1992 e 2006 in lab 
