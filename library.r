@@ -9,6 +9,7 @@ install.packages("viridis")
 install.packages("lidR")
 install.packages("sdm")
 install.packages("rgdal")
+install.packages("colorist")
 
 #library
 library(raster) 
@@ -35,3 +36,6 @@ library(sdm)
 # = specie = modelizzazione delle distribuzioni di specie [1/0]
 # insieme alla library(rgdal)
 library(rgdal)
+
+library(colorist)
+# = per i colori 
